@@ -10,7 +10,7 @@ const Container = ({ children }) => (
   </View>
 );
 
-Container.protoTypes = {
+Container.propTypes = {
   children: PropTypes.any,
 };
 

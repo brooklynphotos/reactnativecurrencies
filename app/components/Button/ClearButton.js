@@ -13,7 +13,7 @@ const ClearButton = ({ text, onPress }) => (
   </TouchableOpacity>
 );
 
-ClearButton.prototype = {
+ClearButton.propTypes = {
   text: PropTypes.string,
   onPress: PropTypes.func,
 };
