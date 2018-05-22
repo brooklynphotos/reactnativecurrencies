@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, StatusBar } from 'react-native';
+import { StatusBar, KeyboardAvoidingView } from 'react-native';
 
 import { Container } from '../components/Container';
 import { Logo } from '../components/Logo';
@@ -36,28 +36,29 @@ class Home extends Component {
       <Container>
         <StatusBar translucent={false} barStyle="light-content" />
         <Header onPress={this.handleOptionsPressed} />
-        <Logo />
-        <InputWithButton
-          buttonText={TEMP_BASE_CURRENCY}
-          onPress={this.handlePressBaseCurrency}
-          defaultValue={TEMP_BASE_PRICE}
-          keyboardType="numeric"
-          onChangeText={this.handleTextChange}
-        />
-        <InputWithButton
-          editable={false}
-          buttonText={TEMP_QUOTE_CURRENCY}
-          onPress={this.handlePressQuoteCurrency}
-          value={TEMP_QUOTE_PRICE}
-        />
-        <LastConverted
-          base={TEMP_BASE_CURRENCY}
-          quote={TEMP_QUOTE_CURRENCY}
-          date={TEMP_CONVERSION_DATE}
-          conversionRate={TEMP_CONVERSION_RATE}
-        />
-        <ClearButton text="Reverse Currencies" onPress={this.handleSwap} />
-        <View />
+        <KeyboardAvoidingView behavior="padding">
+          <Logo />
+          <InputWithButton
+            buttonText={TEMP_BASE_CURRENCY}
+            onPress={this.handlePressBaseCurrency}
+            defaultValue={TEMP_BASE_PRICE}
+            keyboardType="numeric"
+            onChangeText={this.handleTextChange}
+          />
+          <InputWithButton
+            editable={false}
+            buttonText={TEMP_QUOTE_CURRENCY}
+            onPress={this.handlePressQuoteCurrency}
+            value={TEMP_QUOTE_PRICE}
+          />
+          <LastConverted
+            base={TEMP_BASE_CURRENCY}
+            quote={TEMP_QUOTE_CURRENCY}
+            date={TEMP_CONVERSION_DATE}
+            conversionRate={TEMP_CONVERSION_RATE}
+          />
+          <ClearButton text="Reverse Currencies" onPress={this.handleSwap} />
+        </KeyboardAvoidingView>
       </Container>
     );
   }
