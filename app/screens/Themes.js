@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { ScrollView, StatusBar } from 'react-native';
+import { ScrollView, StatusBar, View } from 'react-native';
 import EStyleSheet from 'react-native-extended-stylesheet';
 import { ListItem, Separator } from '../components/List';
 
@@ -11,7 +11,7 @@ function titleCase(str) {
 
 function generateStyles() {
   const params = {};
-  for (let c of colors) {
+  for (const c of colors) {
     params['$' + c] = `$primary${titleCase(c)}`;
   }
   return EStyleSheet.create(params);
@@ -25,22 +25,26 @@ export default class Themes extends Component {
   }
 
   render() {
-    const repeatedList = colors.map((c, i) => (
-      <ListItem
-        key={c}
-        text={titleCase(c)}
-        onPress={() => this.handleThemePress(styles['$' + c])}
-        selected
-        checkmark={false}
-        iconBackGround={styles['$' + c]}
-      />
-    ));
-
+    const repeatedList = colors.map((c, i) => {
+      const styleColor = `$${c}`;
+      return (
+        <View key={`${c}${i}`} >
+          <ListItem
+            text={titleCase(c)}
+            onPress={() => this.handleThemePress(styles[styleColor])}
+            selected
+            checkmark={false}
+            iconBackGround={styles[styleColor]}
+          />
+          <Separator />
+        </View >
+      );
+    });
     return (
       <ScrollView>
         <StatusBar translucent={false} barStyle="default" />
         {repeatedList}
-      </ScrollView>
+      </ScrollView >
     );
   }
 }
