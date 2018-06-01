@@ -3,6 +3,8 @@ import { createStackNavigator } from 'react-navigation';
 
 import Home from '../screens/Home';
 import CurrencyList from '../screens/CurrencyList';
+import Options from '../screens/Options';
+import Themes from '../screens/Themes';
 
 export default createStackNavigator(
   {
@@ -18,6 +20,12 @@ export default createStackNavigator(
       navigationOptions: ({ navigation }) => ({
         headerTitle: navigation.state.params.title,
       }),
+    },
+    Options: {
+      screen: Options,
+    },
+    Themes: {
+      screen: Themes,
     },
   },
   {

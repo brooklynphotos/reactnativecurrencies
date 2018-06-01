@@ -33,7 +33,7 @@ class Home extends Component {
     console.log('swap');
   }
   handleOptionsPressed = () => {
-    console.log('handle options pressed');
+    this.props.navigation.navigate('Options');
   }
   render() {
     return (
