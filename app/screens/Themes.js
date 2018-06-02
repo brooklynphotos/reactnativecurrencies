@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { ScrollView, StatusBar, View } from 'react-native';
 import EStyleSheet from 'react-native-extended-stylesheet';
 import { ListItem, Separator } from '../components/List';
@@ -20,8 +21,11 @@ function generateStyles() {
 const styles = generateStyles();
 
 export default class Themes extends Component {
+  static propTypes = {
+    navigation: PropTypes.object,
+  }
   handleThemePress = (color) => {
-    console.log(`press theme: ${color}`);
+    this.props.navigation.goBack();
   }
 
   render() {
